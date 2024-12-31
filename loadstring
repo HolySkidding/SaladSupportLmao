@@ -1,1 +1,1 @@
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/HolySkidding/SaladSupportLmao/refs/heads/main/NewMainScript.lua", true))()
