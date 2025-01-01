@@ -36,8 +36,6 @@ local httpService = cloneref(game:GetService('HttpService'))
 local fontsize = Instance.new('GetTextBoundsParams')
 fontsize.Width = math.huge
 local notifications
-local assetfunction = getcustomasset
-local getcustomasset
 local clickgui
 local scaledgui
 local toolblur
@@ -330,9 +328,7 @@ local function downloadFile(path, func)
 	return (func or readfile)(path)
 end
 
-getcustomasset = not inputService.TouchEnabled and assetfunction and function(path)
-	return downloadFile(path, assetfunction)
-end or function(path)
+local getcustomasset = function(path)
 	return getcustomassets[path] or ''
 end
 
