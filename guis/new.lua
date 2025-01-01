@@ -123,6 +123,10 @@ local getcustomassets = {
 	['newvape/assets/new/worldicon.png'] = 'rbxassetid://14368362492'
 }
 
+local getcustomasset = function(path)
+	return getcustomassets[path] or ''
+end
+
 local isfile = isfile or function(file)
 	local suc, res = pcall(function()
 		return readfile(file)
