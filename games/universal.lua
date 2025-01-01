@@ -60,7 +60,75 @@ local vape = shared.vape
 local tween = vape.Libraries.tween
 local targetinfo = vape.Libraries.targetinfo
 local getfontsize = vape.Libraries.getfontsize
-local getcustomasset = vape.Libraries.getcustomasset
+
+local getcustomassets = {
+	['vape/assets/new/add.png'] = 'rbxassetid://14368300605',
+	['vape/assets/new/alert.png'] = 'rbxassetid://14368301329',
+	['vape/assets/new/allowedicon.png'] = 'rbxassetid://14368302000',
+	['vape/assets/new/allowedtab.png'] = 'rbxassetid://14368302875',
+	['vape/assets/new/arrowmodule.png'] = 'rbxassetid://14473354880',
+	['vape/assets/new/back.png'] = 'rbxassetid://14368303894',
+	['vape/assets/new/bind.png'] = 'rbxassetid://14368304734',
+	['vape/assets/new/bindbkg.png'] = 'rbxassetid://14368305655',
+	['vape/assets/new/blatanticon.png'] = 'rbxassetid://14368306745',
+	['vape/assets/new/blockedicon.png'] = 'rbxassetid://14385669108',
+	['vape/assets/new/blockedtab.png'] = 'rbxassetid://14385672881',
+	['vape/assets/new/blur.png'] = 'rbxassetid://14898786664',
+	['vape/assets/new/blurnotif.png'] = 'rbxassetid://16738720137',
+	['vape/assets/new/close.png'] = 'rbxassetid://14368309446',
+	['vape/assets/new/closemini.png'] = 'rbxassetid://14368310467',
+	['vape/assets/new/colorpreview.png'] = 'rbxassetid://14368311578',
+	['vape/assets/new/combaticon.png'] = 'rbxassetid://14368312652',
+	['vape/assets/new/customsettings.png'] = 'rbxassetid://14403726449',
+	['vape/assets/new/dots.png'] = 'rbxassetid://14368314459',
+	['vape/assets/new/edit.png'] = 'rbxassetid://14368315443',
+	['vape/assets/new/expandright.png'] = 'rbxassetid://14368316544',
+	['vape/assets/new/expandup.png'] = 'rbxassetid://14368317595',
+	['vape/assets/new/friendstab.png'] = 'rbxassetid://14397462778',
+	['vape/assets/new/guisettings.png'] = 'rbxassetid://14368318994',
+	['vape/assets/new/guislider.png'] = 'rbxassetid://14368320020',
+	['vape/assets/new/guisliderrain.png'] = 'rbxassetid://14368321228',
+	['vape/assets/new/guiv4.png'] = 'rbxassetid://14368322199',
+	['vape/assets/new/guivape.png'] = 'rbxassetid://14657521312',
+	['vape/assets/new/info.png'] = 'rbxassetid://14368324807',
+	['vape/assets/new/inventoryicon.png'] = 'rbxassetid://14928011633',
+	['vape/assets/new/legit.png'] = 'rbxassetid://14425650534',
+	['vape/assets/new/legittab.png'] = 'rbxassetid://14426740825',
+	['vape/assets/new/miniicon.png'] = 'rbxassetid://14368326029',
+	['vape/assets/new/notification.png'] = 'rbxassetid://16738721069',
+	['vape/assets/new/overlaysicon.png'] = 'rbxassetid://14368339581',
+	['vape/assets/new/overlaystab.png'] = 'rbxassetid://14397380433',
+	['vape/assets/new/pin.png'] = 'rbxassetid://14368342301',
+	['vape/assets/new/profilesicon.png'] = 'rbxassetid://14397465323',
+	['vape/assets/new/radaricon.png'] = 'rbxassetid://14368343291',
+	['vape/assets/new/rainbow_1.png'] = 'rbxassetid://14368344374',
+	['vape/assets/new/rainbow_2.png'] = 'rbxassetid://14368345149',
+	['vape/assets/new/rainbow_3.png'] = 'rbxassetid://14368345840',
+	['vape/assets/new/rainbow_4.png'] = 'rbxassetid://14368346696',
+	['vape/assets/new/range.png'] = 'rbxassetid://14368347435',
+	['vape/assets/new/rangearrow.png'] = 'rbxassetid://14368348640',
+	['vape/assets/new/rendericon.png'] = 'rbxassetid://14368350193',
+	['vape/assets/new/rendertab.png'] = 'rbxassetid://14397373458',
+	['vape/assets/new/search.png'] = 'rbxassetid://14425646684',
+	['vape/assets/new/expandicon.png'] = 'rbxassetid://14368353032',
+	['vape/assets/new/targetinfoicon.png'] = 'rbxassetid://14368354234',
+	['vape/assets/new/targetnpc1.png'] = 'rbxassetid://14497400332',
+	['vape/assets/new/targetnpc2.png'] = 'rbxassetid://14497402744',
+	['vape/assets/new/targetplayers1.png'] = 'rbxassetid://14497396015',
+	['vape/assets/new/targetplayers2.png'] = 'rbxassetid://14497397862',
+	['vape/assets/new/targetstab.png'] = 'rbxassetid://14497393895',
+	['vape/assets/new/textguiicon.png'] = 'rbxassetid://14368355456',
+	['vape/assets/new/textv4.png'] = 'rbxassetid://14368357095',
+	['vape/assets/new/textvape.png'] = 'rbxassetid://14368358200',
+	['vape/assets/new/utilityicon.png'] = 'rbxassetid://14368359107',
+	['vape/assets/new/vape.png'] = 'rbxassetid://14373395239',
+	['vape/assets/new/warning.png'] = 'rbxassetid://14368361552',
+	['vape/assets/new/worldicon.png'] = 'rbxassetid://14368362492'
+}
+
+local getcustomasset = function(path)
+	return getcustomassets[path] or ''
+end
 
 local TargetStrafeVector, SpiderShift, WaypointFolder
 local Spider = {Enabled = false}
